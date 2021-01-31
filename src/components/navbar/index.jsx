@@ -2,12 +2,11 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react/cjs/react.development';
 import './index.scss';
 
 const Navbar = ({ toggle, isOpen, variant }) => {
      const isHideNav = !isOpen && variant === 'mobile' ? 'mobile-navbar--hidden' : '';
-     const [isHover, setHover] = useState(false);
+     const [isHover, setHover] = React.useState(false);
      const hoverToggle = () => setHover((prevHover) => !prevHover);
      const hoverClass = isHover && variant === 'desktop' ? 'desktop-navbar__list--hover' : '';
 
