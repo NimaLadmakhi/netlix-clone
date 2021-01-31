@@ -11,8 +11,7 @@ const Home = () => {
      return (
           <HeaderLayout>
                <Banner />
-               <Slider ATOM={TRENDING_MOVIES_ATOM} />
-               <div style={{ height: '100vh' }}></div>
+               <Slider ATOM={TRENDING_MOVIES_ATOM} title='Trending Movies' />
           </HeaderLayout>
      );
 };
