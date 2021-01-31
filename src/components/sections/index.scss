@@ -1,0 +1,27 @@
+/** @format */
+
+.sections {
+     width: 95%;
+     margin: auto;
+     &__list {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: wrap;
+     }
+     &__item {
+          color: orange;
+          padding: 5px 20px;
+          border-radius: 50px;
+          font-size: 14px;
+          margin: 5px 0;
+          cursor: pointer;
+
+          &--active {
+               font-weight: 800;
+               background: orange;
+               color: #000;
+          }
+     }
+}
