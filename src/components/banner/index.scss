@@ -111,3 +111,12 @@
           }
      }
 }
+
+@media (min-width: 1300px) {
+     .banner {
+          height: 600px;
+          &__image {
+               object-position: top;
+          }
+     }
+}
