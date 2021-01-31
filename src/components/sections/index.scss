@@ -17,6 +17,9 @@
           font-size: 14px;
           margin: 5px 0;
           cursor: pointer;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
 
           &--active {
                font-weight: 800;
