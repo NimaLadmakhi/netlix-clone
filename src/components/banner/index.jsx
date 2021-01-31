@@ -13,11 +13,11 @@ const Banner = () => {
 
      React.useEffect(() => {
           const trendingInterval = setInterval(() => {
-               if (currentTrendingIndex > trendingMovie.length - 1) setCurrentTrendingIndex(0);
-               else setCurrentTrendingIndex((prevCurrentIndex) => prevCurrentIndex + 1);
+               if (currentTrendingIndex <= trendingMovie.length - 5) setCurrentTrendingIndex((prevCurrentIndex) => prevCurrentIndex + 1);
+               else setCurrentTrendingIndex(0);
           }, 5000);
           return () => clearInterval(trendingInterval);
-     }, []);
+     }, [currentTrendingIndex]);
 
      const YoutubeHandler = async () => {
           const currentTrendingMovie = trendingMovie[currentTrendingIndex];
