@@ -4,13 +4,12 @@ import MenuWhiteIcon from 'assets/images/menu-white.svg';
 import Navbar from 'components/navbar';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react/cjs/react.development';
 import './index.scss';
 
 const Header = () => {
-     const [toggle, setToggle] = useState(false);
+     const [toggle, setToggle] = React.useState(false);
      const checkVariant = () => (window.innerWidth > 992 ? 'desktop' : 'mobile');
-     const [navbarVariant, setNavbarVariant] = useState(checkVariant());
+     const [navbarVariant, setNavbarVariant] = React.useState(checkVariant());
 
      window.addEventListener('resize', () => setNavbarVariant(checkVariant()));
 
