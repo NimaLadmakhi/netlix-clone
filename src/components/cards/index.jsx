@@ -2,6 +2,7 @@
 
 import { ImageDB_URL, request } from 'fetcher';
 import React from 'react';
+import ReactStars from 'react-rating-stars-component';
 import './index.scss';
 
 const Cards = ({ url }) => {
@@ -22,6 +23,7 @@ const Cards = ({ url }) => {
                          <div className='cards__content'>
                               <h1 className='cards__title'>{item.title}</h1>
                               <p className='cards__description'>{item.overview} ...</p>
+                              <ReactStars classNames='cards__stars' value={item.vote_average / 2} activeColor='orange' count={5} size={15} />
                          </div>
                          <img src={ImageDB_URL(item.backdrop_path)} className='cards__image'></img>
                     </div>

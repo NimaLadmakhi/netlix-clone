@@ -7,6 +7,11 @@
      align-items: center;
      flex-wrap: wrap;
 
+     &__stars {
+          position: relative !important;
+          z-index: -1 !important;
+     }
+
      &__body {
           position: relative;
           z-index: 50;
