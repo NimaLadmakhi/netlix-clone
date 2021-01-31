@@ -18,7 +18,6 @@ const Cards = ({ url }) => {
           <div className='cards'>
                {items?.map((item) => (
                     <div className='cards__body' key={item.id}>
-                         {console.log(item)}
                          <div className='cards__overlay'></div>
                          <div className='cards__content'>
                               <h1 className='cards__title'>{item.title}</h1>
