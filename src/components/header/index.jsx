@@ -9,6 +9,11 @@ import './index.scss';
 
 const Header = () => {
      const [toggle, setToggle] = useState(false);
+     const checkVariant = () => (window.innerWidth > 992 ? 'desktop' : 'mobile');
+     const [navbarVariant, setNavbarVariant] = useState(checkVariant());
+
+     window.addEventListener('resize', () => setNavbarVariant(checkVariant()));
+
      const handleToggle = () => {
           setToggle((prevToggle) => !prevToggle);
           document.body.style.overflowY = !toggle ? 'hidden' : 'scroll';
@@ -21,8 +26,8 @@ const Header = () => {
                     <Link className={`header__link ${isBlurText}`} to='/'>
                          netflix clone
                     </Link>
-                    <img onClick={handleToggle} className='header__logo' src={MenuWhiteIcon} />
-                    <Navbar toggle={handleToggle} isOpen={toggle} />
+                    {navbarVariant === 'mobile' && <img onClick={handleToggle} className='header__logo' src={MenuWhiteIcon} />}
+                    <Navbar toggle={handleToggle} variant={navbarVariant} isOpen={toggle} />
                </nav>
           </header>
      );

@@ -2,10 +2,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react/cjs/react.development';
 import './index.scss';
 
-const Navbar = ({ toggle, isOpen }) => {
-     const isHideNav = !isOpen ? 'mobile-navbar--hidden' : '';
+const Navbar = ({ toggle, isOpen, variant }) => {
+     const isHideNav = !isOpen && variant === 'mobile' ? 'mobile-navbar--hidden' : '';
+     const [isHover, setHover] = useState(false);
+     const hoverToggle = () => setHover((prevHover) => !prevHover);
+     const hoverClass = isHover && variant === 'desktop' ? 'desktop-navbar__list--hover' : '';
 
      const menuItems = [
           { children: 'HOME', to: '/' },
@@ -15,11 +19,11 @@ const Navbar = ({ toggle, isOpen }) => {
      ];
 
      return (
-          <div className={`mobile-navbar ${isHideNav}`} onClick={toggle}>
-               <ul className='mobile-navbar__list'>
+          <div className={`${variant}-navbar ${isHideNav}`} onClick={toggle}>
+               <ul className={`${variant}-navbar__list ${hoverClass}`}>
                     {menuItems.map((menuItem) => (
-                         <li key={menuItem.to} className='mobile-navbar__item'>
-                              <Link to={menuItem.to} className='mobile-navbar__link'>
+                         <li onMouseLeave={hoverToggle} onMouseEnter={hoverToggle} key={menuItem.to} className={`${variant}-navbar__item`}>
+                              <Link to={menuItem.to} className={`${variant}-navbar__link`}>
                                    {menuItem.children}
                               </Link>
                          </li>
