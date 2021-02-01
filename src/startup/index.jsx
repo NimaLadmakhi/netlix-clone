@@ -1,5 +1,6 @@
 /** @format */
 
+import ActorsArchive from 'pages/actors-archive';
 import ArchiveGenre from 'pages/archive-genre';
 import Home from 'pages/home';
 import SingleGenre from 'pages/single-genre';
@@ -39,6 +40,7 @@ export default () => {
                                    )}
                               />
                               <Route path='/genre/:id/:name/:type' exact component={SingleGenre} />
+                              <Route path='/actors-archive' exact component={ActorsArchive} />
                          </Switch>
                     </Router>
                </React.Suspense>

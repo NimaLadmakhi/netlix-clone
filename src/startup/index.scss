@@ -10,3 +10,7 @@ body {
      background-color: #111;
      font-family: 'Roboto';
 }
+
+*:focus {
+     outline: none;
+}

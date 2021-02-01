@@ -1,0 +1,132 @@
+.actors-archive {
+     width: 95%;
+     margin: auto;
+     padding: 10px 0;
+
+     &__selection {
+          margin-bottom: 20px;
+     }
+
+     &__select {
+          margin-bottom: 10px;
+          width: 100%;
+          height: 40px;
+          padding: 0 5px;
+          background: none;
+          border: none;
+          outline: none;
+          border-bottom: 2px solid orange;
+          color: orange;
+          font-size: 13px;
+          font-family: inherit;
+     }
+
+     &__form {
+          width: 95%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          margin: 10px auto;
+     }
+
+     &__label {
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          color: orange;
+          font-size: 14px;
+     }
+
+     &__checkbox {
+          margin: 0 10px;
+          position: relative;
+          height: 12px;
+          width: 12px;
+     }
+     
+     &__row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+     }
+
+     &__button {
+          top: 0;
+          left: 0;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          border-radius: 2px;
+          border: 2px solid orange;
+     }
+
+     &__input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          z-index: 95;
+          appearance: none;
+     }
+
+     &__input:checked ~ &__button {
+          background: orange;
+     }
+}
+
+
+@media (min-width: 350px) {
+     .actors-archive {
+          width: 300px;
+     }
+}
+
+@media (min-width: 500px) {
+     .actors-archive{
+          width: 500px;
+
+          &__card {
+               width: 150px;
+          }
+     }
+}
+
+@media (min-width: 700px) {
+     .actors-archive{
+          width: 700px;
+     }
+}
+
+@media(min-width: 1000px) {
+     .actors-archive {
+          width: 950px;
+          
+          &__selection {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+          }
+          
+          &__select {
+               width: 400px;
+          }
+          
+          &__row {
+               width: 75%;
+          }
+          &__body {
+               display: flex;
+               width: 100%;
+               justify-content: space-between;
+               align-items: flex-start;
+          }
+          &__form {
+               align-items: flex-start;  
+               width: 20%;
+               margin: 0;
+          }
+     }
+}
