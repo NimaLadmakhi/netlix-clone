@@ -25,19 +25,29 @@ const Banner = () => {
           const response = await request(MovieDB_URL(currentTrendingMovie.id));
           setCurrentKeyMovie(response?.results[0]?.key);
      };
-     
+
      const resetYoutubeKey = () => setCurrentKeyMovie();
      const currentMovie = trendingMovie[currentTrendingIndex];
-     if (currentKeyMovie) return <YouTube videoId={currentKeyMovie} className='youtube__video' onEnd={resetYoutubeKey} />;
+     if (currentKeyMovie)
+          return (
+               <YouTube
+                    opts={{
+                         playerVars: {
+                              autoplay: true,
+                         },
+                    }}
+                    videoId={currentKeyMovie}
+                    className='youtube__video'
+                    onEnd={resetYoutubeKey}
+               />
+          );
      return (
           <div className='banner' onClick={youtubeHandler}>
-               <p>
-                    <img className='banner__image' src={ImageDB_URL(currentMovie.backdrop_path)} />
-                    <div className='banner__content'>
-                         <h1 className='banner__title'>{currentMovie.title}</h1>
-                         <p className='banner__description'>{currentMovie.overview}</p>
-                    </div>
-               </p>
+               <img className='banner__image' src={ImageDB_URL(currentMovie.backdrop_path)} />
+               <div className='banner__content'>
+                    <h1 className='banner__title'>{currentMovie.title}</h1>
+                    <p className='banner__description'>{currentMovie.overview}</p>
+               </div>
           </div>
      );
 };
