@@ -33,7 +33,7 @@ const Banner = () => {
                <YouTube
                     opts={{
                          playerVars: {
-                              autoplay: true,
+                              autoplay: 1,
                          },
                     }}
                     videoId={currentKeyMovie}
