@@ -6,18 +6,43 @@ import Sections from 'components/sections';
 import Slider from 'components/slider';
 import HeaderLayout from 'layouts/HeaderLayout';
 import React from 'react';
-import { GENRE_MOVIE_ATOM, GENRE_TV_ATOM, TOP_RATED_MOVIE_ATOM, TRENDING_MOVIES_ATOM, UP_COMMING_MOVIE_ATOM } from 'recoil/atoms';
+import { useRecoilValue } from 'recoil';
+import * as atomRecoil from 'recoil/atoms';
 import './index.scss';
 
 const Home = () => {
+     const trendingMovieState = useRecoilValue(atomRecoil.TRENDING_MOVIES_ATOM);
+     const upCommingMovieState = useRecoilValue(atomRecoil.UP_COMMING_MOVIE_ATOM);
+     const topRatedMovueState = useRecoilValue(atomRecoil.TOP_RATED_MOVIE_ATOM);
+
+     const sliderCollection = [
+          { state: trendingMovieState, title: 'Trending Movies' },
+          { state: upCommingMovieState, title: 'Up Comming Movies' },
+          { state: topRatedMovueState, title: 'Top Rated Movies' },
+     ];
+
+     const sectionCollection = [
+          {
+               QUERY_ATOM: atomRecoil.GENRE_MOVIES_QUERY_ATOM,
+               title: 'GENRE OF MOVIES',
+               ATOM: atomRecoil.GENRE_MOVIE_ATOM,
+          },
+          {
+               QUERY_ATOM: atomRecoil.GENRE_TV_QUERY_ATOM,
+               title: 'GENRE OF TV',
+               ATOM: atomRecoil.GENRE_TV_ATOM,
+          },
+     ];
+
      return (
           <HeaderLayout>
                <Banner />
-               <Slider ATOM={TRENDING_MOVIES_ATOM} title='Trending Movies' />
-               <Slider ATOM={UP_COMMING_MOVIE_ATOM} title='Up Comming Movies' />
-               <Slider ATOM={TOP_RATED_MOVIE_ATOM} title='Top Rated Movies' />
-               <Sections title='GENRE OF MOVIES' ATOM={GENRE_MOVIE_ATOM} />
-               <Sections title='GENRE OF TV' ATOM={GENRE_TV_ATOM} />
+               {sliderCollection.map((slider_item) => (
+                    <Slider {...slider_item} key={slider_item.title} />
+               ))}
+               {sectionCollection.map((section_item) => (
+                    <Sections {...section_item} key={section_item.title} />
+               ))}
                <Actors />
           </HeaderLayout>
      );

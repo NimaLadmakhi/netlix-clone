@@ -1,6 +1,14 @@
 /** @format */
 
-import { GenreMovieDB_URL, GenreTvDB_URL, PersonPopular_URL, request, TopRatedMovieDB_URL, TrendingMovieDB_URL, UpCommingMovieDB_URL } from 'fetcher';
+import {
+     GenreMovieDB_URL,
+     GenreTvDB_URL,
+     PersonPopular_URL,
+     request,
+     TopRatedMovieDB_URL,
+     TrendingMovieDB_URL,
+     UpCommingMovieDB_URL
+} from 'fetcher';
 import { atom, selector } from 'recoil';
 
 const TRENDING_MOVIES_ATOM = atom({
@@ -47,6 +55,16 @@ const GENRE_MOVIE_ATOM = atom({
      }),
 });
 
+const GENRE_MOVIES_QUERY_ATOM = atom({
+     key: 'GENRE MOVIES QUERY ATOM',
+     default: {},
+});
+
+const GENRE_TV_QUERY_ATOM = atom({
+     key: 'GENRE TV QUERY ATOM',
+     default: {},
+});
+
 const GENRE_TV_ATOM = atom({
      key: 'GENRE TV ATOM',
      default: selector({
@@ -56,6 +74,11 @@ const GENRE_TV_ATOM = atom({
                return response?.genres;
           },
      }),
+});
+
+const GENRE_DETAIL_SELECT = atom({
+     key: 'GENRE DETAIL SELECT',
+     default: {},
 });
 
 const ACTORS_ATOM = atom({
@@ -69,4 +92,15 @@ const ACTORS_ATOM = atom({
      }),
 });
 
-export { TRENDING_MOVIES_ATOM, UP_COMMING_MOVIE_ATOM, TOP_RATED_MOVIE_ATOM, GENRE_MOVIE_ATOM, GENRE_TV_ATOM, ACTORS_ATOM };
+export {
+     GENRE_DETAIL_SELECT,
+     TRENDING_MOVIES_ATOM,
+     UP_COMMING_MOVIE_ATOM,
+     TOP_RATED_MOVIE_ATOM,
+     GENRE_MOVIE_ATOM,
+     GENRE_TV_ATOM,
+     ACTORS_ATOM,
+     GENRE_MOVIES_QUERY_ATOM,
+     GENRE_TV_QUERY_ATOM,
+};
+

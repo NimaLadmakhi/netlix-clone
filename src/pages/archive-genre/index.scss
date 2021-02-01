@@ -1,0 +1,19 @@
+/** @format */
+
+.archive {
+     width: 95%;
+     margin: auto;
+
+     &__title {
+          color: orange;
+          font-weight: 100;
+          padding: 20px 0;
+          font-size: 20px;
+          text-align: right;
+     }
+     
+     &__link{
+          text-decoration: none;
+          color: inherit;
+     }
+}

@@ -14,14 +14,25 @@ const Navbar = ({ toggle, isOpen, variant }) => {
           { children: 'HOME', to: '/' },
           { children: 'SIGNUP', to: '/signup' },
           { children: 'LOGIN', to: '/login' },
-          { children: 'ARCHIVES', to: '/archives' },
+          {
+               children: 'MOVIES',
+               to: '/movie',
+          },
+          {
+               children: 'TV',
+               to: '/tv',
+          },
      ];
 
      return (
           <div className={`${variant}-navbar ${isHideNav}`} onClick={toggle}>
                <ul className={`${variant}-navbar__list ${hoverClass}`}>
                     {menuItems.map((menuItem) => (
-                         <li onMouseLeave={hoverToggle} onMouseEnter={hoverToggle} key={menuItem.to} className={`${variant}-navbar__item`}>
+                         <li
+                              onMouseLeave={hoverToggle}
+                              onMouseEnter={hoverToggle}
+                              key={menuItem.children}
+                              className={`${variant}-navbar__item`}>
                               <Link to={menuItem.to} className={`${variant}-navbar__link`}>
                                    {menuItem.children}
                               </Link>

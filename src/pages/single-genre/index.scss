@@ -1,0 +1,21 @@
+.single-genre {
+     width: 95%;
+     margin: auto;
+
+     &__title {
+          color: orange;
+          font-size: 18px;
+          text-align: center;
+          margin: 30px 0;
+     }
+}
+
+@media (min-width: 1150px) {
+     .single-genre {
+          &__title {
+               font-size: 25px;
+               margin-left: 20px;
+               text-align: left;
+          }
+     }
+}

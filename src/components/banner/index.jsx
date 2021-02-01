@@ -14,7 +14,10 @@ const Banner = () => {
 
      React.useEffect(() => {
           const trendingInterval = setInterval(() => {
-               if (currentTrendingIndex <= trendingMovie.length - 5) setCurrentTrendingIndex((prevCurrentIndex) => prevCurrentIndex + 1);
+               if (currentTrendingIndex <= trendingMovie.length - 5)
+                    setCurrentTrendingIndex(
+                         (prevCurrentIndex) => prevCurrentIndex + 1,
+                    );
                else setCurrentTrendingIndex(0);
           }, 5000);
           return () => clearInterval(trendingInterval);
@@ -43,10 +46,15 @@ const Banner = () => {
           );
      return (
           <div className='banner' onClick={youtubeHandler}>
-               <img className='banner__image' src={ImageDB_URL(currentMovie.backdrop_path)} />
+               <img
+                    className='banner__image'
+                    src={ImageDB_URL(currentMovie.backdrop_path)}
+               />
                <div className='banner__content'>
                     <h1 className='banner__title'>{currentMovie.title}</h1>
-                    <p className='banner__description'>{currentMovie.overview}</p>
+                    <p className='banner__description'>
+                         {currentMovie.overview}
+                    </p>
                </div>
           </div>
      );
