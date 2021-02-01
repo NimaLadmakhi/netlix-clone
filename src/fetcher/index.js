@@ -13,6 +13,8 @@ export const UpCommingMovieDB_URL = `https://api.themoviedb.org/3/movie/upcoming
 export const TrendingMovieDB_URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_TOKEN}`;
 export const MovieDB_URL = (id) => `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_TOKEN}`;
 export const ImageDB_URL = (src) => `https://image.tmdb.org/t/p/original/${src}?api_key=${API_TOKEN}`;
+export const PersonPopular_URL = `https://api.themoviedb.org/3/person/popular?api_key=${API_TOKEN}`;
+export const PersonLatest_URL = `https://api.themoviedb.org/3/person/latest?api_key=${API_TOKEN}`;
 export const request = async (...args) => {
      const response = await axios.get(...args);
      if (response.status !== 200) {

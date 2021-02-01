@@ -1,5 +1,6 @@
 /** @format */
 
+import Actors from 'components/actors';
 import Banner from 'components/banner';
 import Sections from 'components/sections';
 import Slider from 'components/slider';
@@ -17,6 +18,7 @@ const Home = () => {
                <Slider ATOM={TOP_RATED_MOVIE_ATOM} title='Top Rated Movies' />
                <Sections title='GENRE OF MOVIES' ATOM={GENRE_MOVIE_ATOM} />
                <Sections title='GENRE OF TV' ATOM={GENRE_TV_ATOM} />
+               <Actors />
           </HeaderLayout>
      );
 };
