@@ -1,5 +1,6 @@
 /** @format */
 
+import ScrollChecker from 'components/scroll-checker';
 import ActorsArchive from 'pages/actors-archive';
 import ArchiveGenre from 'pages/archive-genre';
 import Home from 'pages/home';
@@ -15,33 +16,35 @@ export default () => {
           <RecoilRoot>
                <React.Suspense fallback={<p>Loading ...</p>}>
                     <Router>
-                         <Switch>
-                              <Route path='/' exact component={Home} />
-                              <Route
-                                   path='/movie'
-                                   exact
-                                   render={() => (
-                                        <ArchiveGenre
-                                             title='Movie'
-                                             ATOM={GENRE_MOVIE_ATOM}
-                                             QUERY_ATOM={GENRE_MOVIES_QUERY_ATOM}
-                                        />
-                                   )}
-                              />
-                              <Route
-                                   path='/tv'
-                                   exact
-                                   render={() => (
-                                        <ArchiveGenre
-                                             title='Tv'
-                                             ATOM={GENRE_TV_ATOM}
-                                             QUERY_ATOM={GENRE_TV_QUERY_ATOM}
-                                        />
-                                   )}
-                              />
-                              <Route path='/genre/:id/:name/:type' exact component={SingleGenre} />
-                              <Route path='/actors-archive' exact component={ActorsArchive} />
-                         </Switch>
+                         <ScrollChecker>
+                              <Switch>
+                                   <Route path='/' exact component={Home} />
+                                   <Route
+                                        path='/movie'
+                                        exact
+                                        render={() => (
+                                             <ArchiveGenre
+                                                  title='Movie'
+                                                  ATOM={GENRE_MOVIE_ATOM}
+                                                  QUERY_ATOM={GENRE_MOVIES_QUERY_ATOM}
+                                             />
+                                        )}
+                                   />
+                                   <Route
+                                        path='/tv'
+                                        exact
+                                        render={() => (
+                                             <ArchiveGenre
+                                                  title='Tv'
+                                                  ATOM={GENRE_TV_ATOM}
+                                                  QUERY_ATOM={GENRE_TV_QUERY_ATOM}
+                                             />
+                                        )}
+                                   />
+                                   <Route path='/genre/:id/:name/:type' exact component={SingleGenre} />
+                                   <Route path='/actors-archive' exact component={ActorsArchive} />
+                              </Switch>
+                         </ScrollChecker>
                     </Router>
                </React.Suspense>
           </RecoilRoot>

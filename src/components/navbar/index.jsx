@@ -7,7 +7,8 @@ import './index.scss';
 const Navbar = ({ toggle, isOpen, variant }) => {
      const isHideNav = !isOpen && variant === 'mobile' ? 'mobile-navbar--hidden' : '';
      const [isHover, setHover] = React.useState(false);
-     const hoverToggle = () => setHover((prevHover) => !prevHover);
+     const closeHover = () => setHover(false);
+     const openHover = () => setHover(true);
      const hoverClass = isHover && variant === 'desktop' ? 'desktop-navbar__list--hover' : '';
 
      const menuItems = [
@@ -33,8 +34,9 @@ const Navbar = ({ toggle, isOpen, variant }) => {
                <ul className={`${variant}-navbar__list ${hoverClass}`}>
                     {menuItems.map((menuItem) => (
                          <li
-                              onMouseLeave={hoverToggle}
-                              onMouseEnter={hoverToggle}
+                              onMouseOut={closeHover}
+                              onMouseLeave={closeHover}
+                              onMouseEnter={openHover}
                               key={menuItem.children}
                               className={`${variant}-navbar__item`}>
                               <Link to={menuItem.to} className={`${variant}-navbar__link`}>

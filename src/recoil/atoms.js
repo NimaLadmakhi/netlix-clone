@@ -94,7 +94,6 @@ const ACTORS_ATOM_FILTER = selectorFamily({
      get: ({ genres, gender, sortAs }) => ({ get }) => {
           const actors = get(ACTORS_ATOM);
           const collection = [];
-
           [...genres]
                .filter((genre) => genre.checked)
                .map((genre) => {
