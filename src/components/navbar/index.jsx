@@ -22,6 +22,10 @@ const Navbar = ({ toggle, isOpen, variant }) => {
                children: 'TV',
                to: '/tv',
           },
+          {
+               children: 'Actors',
+               to: '/actors-archive',
+          },
      ];
 
      return (

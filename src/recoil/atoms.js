@@ -9,7 +9,7 @@ import {
      TrendingMovieDB_URL,
      UpCommingMovieDB_URL
 } from 'fetcher';
-import { atom, selector } from 'recoil';
+import { atom, selector, selectorFamily } from 'recoil';
 
 const TRENDING_MOVIES_ATOM = atom({
      key: 'TREND_MOVIE_ATOM',
@@ -81,15 +81,50 @@ const GENRE_DETAIL_SELECT = atom({
      default: {},
 });
 
-const ACTORS_ATOM = atom({
-     key: 'ACTORS_ATOM',
-     default: selector({
-          key: 'ACTORS_SELECTOR',
-          get: async () => {
-               const popularResponse = await request(PersonPopular_URL);
-               return popularResponse.results;
-          },
-     }),
+const ACTORS_ATOM = selector({
+     key: 'ACTORS_SELECTOR',
+     get: async () => {
+          const popularResponse = await request(PersonPopular_URL);
+          return popularResponse.results;
+     },
+});
+
+const ACTORS_ATOM_FILTER = selectorFamily({
+     key: 'FILTER ACTORS ATOM',
+     get: ({ genres, gender, sortAs }) => ({ get }) => {
+          const actors = get(ACTORS_ATOM);
+          const collection = [];
+
+          [...genres]
+               .filter((genre) => genre.checked)
+               .map((genre) => {
+                    actors.map((actor) => {
+                         // genre_ids
+                         actor.known_for.map((movie) => {
+                              if (movie.genre_ids.includes(genre.id)) {
+                                   collection.push(actor);
+                              }
+                         });
+                    });
+               });
+          function sorter(collection) {
+               switch (sortAs) {
+                    case 'asc':
+                         return collection.sort((a, b) => b.popularity - a.popularity);
+                    case 'dsc':
+                         return collection.sort((a, b) => a.popularity - b.popularity);
+                    default:
+                         return collection;
+               }
+          }
+
+          return sorter(
+               [...new Set(collection)].filter((actor) => {
+                    if (gender === '0') return actor;
+                    return actor.gender === +gender;
+               }),
+          );
+     },
 });
 
 export {
@@ -102,5 +137,6 @@ export {
      ACTORS_ATOM,
      GENRE_MOVIES_QUERY_ATOM,
      GENRE_TV_QUERY_ATOM,
+     ACTORS_ATOM_FILTER,
 };
 
